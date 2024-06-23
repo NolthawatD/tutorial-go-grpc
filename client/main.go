@@ -22,7 +22,8 @@ func main() {
 
 	// err = calculatorService.Hello("Nolthawat")
 	// err = calculatorService.Fibonacci(3)
-	err = calculatorService.Average(1, 2, 3, 4, 5)
+	// err = calculatorService.Average(1, 2, 3, 4, 5)
+	err = calculatorService.Sum(1, 2, 3, 4, 5)
 	if err != nil {
 		log.Fatal(err)
 	}
