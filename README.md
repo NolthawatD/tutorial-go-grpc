@@ -39,3 +39,5 @@ desc HelloRequest
 desc HelloResponse
 cal Hello (method rpc)
 exit
+
+> evans -r
