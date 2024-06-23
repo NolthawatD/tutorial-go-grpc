@@ -2,17 +2,36 @@ package main
 
 import (
 	"client/services"
+	"flag"
 	"log"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/status"
 )
 
 func main() {
 
-	creds := insecure.NewCredentials()
-	cc, err := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(creds))
+	var cc *grpc.ClientConn
+	var err error
+	var creds credentials.TransportCredentials
+
+	host := flag.String("host", "localhost:50051", "gRPC server host")
+	tls := flag.Bool("tls", false, "use a secure TLS connection")
+	flag.Parse()
+
+	if *tls {
+		certFile := "../tls/ca.crt"
+		creds, err = credentials.NewClientTLSFromFile(certFile, "")
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		creds = insecure.NewCredentials()
+	}
+
+	cc, err = grpc.Dial(*host, grpc.WithTransportCredentials(creds))
 	if err != nil {
 		log.Fatal(err)
 	}

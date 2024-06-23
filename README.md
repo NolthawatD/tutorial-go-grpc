@@ -41,3 +41,8 @@ cal Hello (method rpc)
 exit
 
 > evans -r
+
+## TLS
+> ca.crt to client only
+> go run . -h  
+check flag
