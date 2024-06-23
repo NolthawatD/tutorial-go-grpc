@@ -31,7 +31,7 @@ func main() {
 		creds = insecure.NewCredentials()
 	}
 
-	cc, err = grpc.Dial(*host, grpc.WithTransportCredentials(creds))
+	cc, err = grpc.NewClient(*host, grpc.WithTransportCredentials(creds))
 	if err != nil {
 		log.Fatal(err)
 	}
