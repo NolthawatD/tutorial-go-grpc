@@ -7,7 +7,7 @@
 ## Build protoc to server go
 
 > protoc calculator.proto --go_out=../server  
-get request and response only
+generate request and response 
 
 > --go-grpc_out=../server
 file server
@@ -21,9 +21,11 @@ paste command for can use excute file
 ## install package grpc in server
 go get google.golang.org/grpc
 
+
 ## install Evan for gRPC like Postman
 > brew tap ktr0731/evans
 > brew install evans
+
 
 ## Open terminal in area
 > cmd + shift + p
